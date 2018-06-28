@@ -3,7 +3,7 @@ A blockchain based voting system in which the the owner of the contract(dapp) ca
 
 *This project contains* -
 
->VoteXDapp - Solidity code used for writing the decentralised app.Web3j's android library is used for integration.
+>Contract - Solidity code used for writing the decentralised app.Web3j's android library is used for integration.
 
 >VoteXApp - Android app showing the integration of the the dapp and its features with android.Infura is
 			 used to access the Ethereum network.
