@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/top_card"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:cardElevation="10dp"
+        android:layout_alignParentTop="true" >
+
+        <RelativeLayout
+            android:background="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:textSize="60sp"
+                android:textColor="#ffffff"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_centerInParent="true"
+                android:text="VoteX" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        app:cardElevation="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/top_card" >
+
+        <RelativeLayout
+            android:background="#d1d188"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="67dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:text="Blockhain based voting system"
+                android:textAlignment="gravity"
+                android:textColor="#ffffff"
+                android:textSize="40sp" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:textAlignment="gravity"
+                        android:gravity="center"
+                        android:layout_alignParentTop="true"
+                        android:text="Wallet password"
+                        android:background="#b4b477"
+                        android:textColor="#ffffff"
+                        android:textSize="30sp"
+                        />
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:backgroundTint="#000000"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:ems="10"
+                        android:inputType="textPassword" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/SignInButton"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="67dp"
+        android:backgroundTint="#d1d188"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Sign In"
+        android:textColor="#000000"
+        android:textSize="30sp" />
+</RelativeLayout>

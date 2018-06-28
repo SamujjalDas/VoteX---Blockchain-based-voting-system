@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voting DApp</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+</head>
+<body  class="container">
+		
+  <h1>Votex</h1>
+  <h1>A Blockchain Based Voting System</h1>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td id="candidate-1"></td>
+        </tr>
+        <tr>
+          <td>Ron</td>
+          <td id="candidate-2"></td>
+        </tr>
+        <tr>
+          <td>Harry</td>
+          <td id="candidate-3"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <input type="text" id="candidate" />
+  
+  <button id="button">Vote </button>
+
+
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+        if(typeof web3 !=='undefined')
+        {
+                web3 = new Web3(web3.currentProvider);
+        }
+        else{
+                web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+
+        var Contract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "candidateNames",
+				"type": "bytes32"
+			}
+		],
+		"name": "setCandidateName",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "voteForCandidate",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "candidateList",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "totalVotesFor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "validCandidate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "voted",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "votesRecieved",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+	);
+
+var Voting =Contract.at('0xf2cf59dda8ba1b88d90c0ed687ea377c63b27757');
+
+
+console.log(Voting);
+
+
+
+		Voting.totalVotesFor("John",function(err,res){
+			if(!err){
+				
+				$("#candidate-1").html(res.toString());
+
+			}
+		else{console.log(error);}});
+
+
+		Voting.totalVotesFor("Ron",function(err,res){
+			if(!err){
+			
+				$("#candidate-2").html(res.toString());
+
+			}
+		else{console.log(error);}});
+
+		Voting.totalVotesFor("Harry",function(err,res){
+			if(!err){
+			
+				$("#candidate-3").html(res.toString());
+
+			}
+		else{console.log(error);}});
+
+
+
+
+
+     $("#button").click(function()  {
+      
+  candidateName = $("#candidate").val();
+       
+  Voting.voteForCandidate(candidateName, function() {
+	
+
+  
+	
+    Voting.totalVotesFor("John",function(err,res){
+			if(!err){
+				
+				$("#candidate-1").html(res.toString());
+
+			}
+		else{console.log(error);}});
+
+		Voting.totalVotesFor("Ron",function(err,res){
+			if(!err){
+			
+				$("#candidate-2").html(res.toString());
+
+			}
+		else{console.log(error);}});
+
+
+		 Voting.totalVotesFor("Harry",function(err,res){
+			if(!err){
+				
+				$("#candidate-3").html(res.toString());
+
+			}
+		else{console.log(error);}});
+	
+		});
+ 
+})
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>
